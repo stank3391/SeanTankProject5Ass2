@@ -41,7 +41,7 @@ STUDENT_DATA ParseStringToStudentData(string line) {
 * Read the file line by line
 * Fill the vector with a STUDENT_DATA object
 */
-void PopulateVectorFromFile(ifstream file, vector <STUDENT_DATA> classList) {
+void PopulateVectorFromFile(ifstream file, vector <STUDENT_DATA> &classList) {
 	string line;
 	while (getline(file, line)) {
 		classList.push_back(ParseStringToStudentData(line));
@@ -60,7 +60,8 @@ void PrintClassList(vector <STUDENT_DATA> classList) {
 int main() {
 	vector <STUDENT_DATA> classList;
 	PopulateVectorFromFile(ifstream (STUDENTDATAFILE), classList);
+#ifdef _DEBUG
 	PrintClassList(classList);
-
+#endif
 	return 1;
 }
